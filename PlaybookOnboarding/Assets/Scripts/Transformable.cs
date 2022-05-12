@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Transformable : MonoBehaviour, ISelectable
 {
+    private Vector3 mOffset;
+
     public void Select()
     {
         InputController.instance.previousSelectable.Deselect();
 
         InputController.instance.selectedObject = transform;
-        var selectedObj = InputController.instance.selectedObject;
-        InputController.instance.offset = InputController.instance.GetMousePos() - selectedObj.position;
+        mOffset = InputController.instance.GetMousePos() - transform.position;
 
-        if (InputController.instance.hitObject != selectedObj)
+        if (InputController.instance.hitObject == transform)
         {
             ToggleSelectedObjectUI(false);
-            selectedObj = InputController.instance.hitObject;
+            InputController.instance.selectedObject = InputController.instance.hitObject;
         }
-        InputController.instance.offset = InputController.instance.GetMousePos() - selectedObj.transform.position;
     }
 
     public void Deselect()
@@ -31,7 +31,7 @@ public class Transformable : MonoBehaviour, ISelectable
         ToggleSelectedObjectUI(true);
         if (InputController.instance.isGrabbing)
         {
-            InputController.instance.selectedObject.transform.position = InputController.instance.GetMousePos() + InputController.instance.offset;
+            transform.position = InputController.instance.GetMousePos() - mOffset;
         }
     }
 

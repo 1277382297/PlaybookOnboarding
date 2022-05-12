@@ -8,7 +8,6 @@ public class InputController : MonoBehaviour
 
     public Transform selectedObject { get { return mSelectedObject; } set { mSelectedObject = value; } }
     public bool isGrabbing { get { return bIsGrabbing; } set { bIsGrabbing = value; } }
-    public Vector3 offset { get { return mOffset; } set { mOffset = value; } }
     public GameObject gimbal { get { return mGimbal; } }
     public Transform hitObject { get { return mHitObject; } set { mHitObject = value; } }
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
@@ -16,7 +15,6 @@ public class InputController : MonoBehaviour
     private Transform mSelectedObject = null;
     private bool bIsGrabbing = false;
     private GameObject mGimbal = null;
-    private Vector3 mOffset = Vector3.zero;
     private Transform mHitObject;
     private ISelectable mPreviousSelectable = null;
 
