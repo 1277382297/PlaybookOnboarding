@@ -63,8 +63,22 @@ public class GimbalController : MonoBehaviour, ISelectable
         switch (transformMode)
         {
             case TransformMode.Rotate:
-                transform.parent.localPosition = mLocalPosition;
+                StartCoroutine(PrettyLerpyUwu(mLocalPosition, 15));
+                //transform.parent.localPosition = mLocalPosition;
                 break;
         }
+    }
+
+    private IEnumerator PrettyLerpyUwu(Vector3 endPos, float step)
+    {
+        var timeElapsed = 0f;
+        var startPos = transform.parent.localPosition;
+        while (Vector3.Distance(transform.parent.localPosition, endPos) > 0.01f)
+        {
+            transform.parent.localPosition = Vector3.Lerp(startPos, endPos, timeElapsed);
+            timeElapsed += Time.deltaTime * step;
+            yield return null;
+        }
+
     }
 }
