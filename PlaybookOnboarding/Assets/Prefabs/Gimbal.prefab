@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 0
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 1
 --- !u!1 &2098514782443244079
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 0
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 1
 --- !u!1 &4397761177663453106
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 1
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 10
 --- !u!1 &4710390491565617518
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 0
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 1
 --- !u!1 &5461607908711530082
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 1
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 10
 --- !u!1 &6723891983664090012
 GameObject:
   m_ObjectHideFlags: 0
@@ -725,7 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 1
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 10
 --- !u!1 &8659813321346105656
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,7 +919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 2
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 2
 --- !u!1 &8659813322247766395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 2
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 2
 --- !u!1 &8659813322249547414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,4 +1139,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformMode: 2
-  gimbalTransform: {fileID: 8659813321346105660}
+  mSensitivity: 2
