@@ -13,11 +13,6 @@ public class GimbalController : MonoBehaviour, ISelectable
     private Vector3 mPreviousMousePos;
     private Vector3 mLocalPosition;
 
-    private void OnEnable()
-    {
-        mLocalPosition = transform.parent.localPosition;
-    }
-
     private void Update()
     {
         if (InputController.instance.selectedObject)
@@ -27,6 +22,7 @@ public class GimbalController : MonoBehaviour, ISelectable
     public void Select()
     {
         mOffset = transform.parent.position - InputController.instance.selectedObject.transform.position;
+        mLocalPosition = transform.parent.localPosition;
         mPreviousMousePos = Vector3.Project(InputController.instance.GetMousePos(), mOffset.normalized);
     }
 

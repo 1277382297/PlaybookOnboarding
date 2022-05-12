@@ -6,8 +6,7 @@ public class Transformable : MonoBehaviour, ISelectable
 {
     public void Select()
     {
-        if (InputController.instance.previousSelectable != null && InputController.instance.previousSelectable != this)
-            InputController.instance.previousSelectable.Deselect();
+        InputController.instance.previousSelectable.Deselect();
 
         InputController.instance.selectedObject = transform;
         var selectedObj = InputController.instance.selectedObject;
