@@ -12,6 +12,7 @@ public class InputController : MonoBehaviour
     public Transform hitObject { get { return mHitObject; } set { mHitObject = value; } }
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
     public Transform[] gimbalsList { get { return mGimbalsList; } }
+    public GimbalValue[] defaultGimbalValues { get { return mDefaultGimbalValues; } }
 
     private Transform mSelectedObject = null;
     private bool bIsGrabbing = false;
@@ -19,6 +20,7 @@ public class InputController : MonoBehaviour
     private Transform mHitObject;
     private ISelectable mPreviousSelectable = null;
     private Transform[] mGimbalsList;
+    private GimbalValue[] mDefaultGimbalValues;
 
     public static InputController instance;
 
@@ -33,7 +35,10 @@ public class InputController : MonoBehaviour
         mGimbal.SetActive(false);
         var gimbalManager = mGimbal.GetComponent<GimbalManager>();
         if (gimbalManager)
+        {
             mGimbalsList = gimbalManager.gimbals;
+            mDefaultGimbalValues = gimbalManager.defaultValues;
+        }
     }
 
     private void Update()

@@ -17,7 +17,14 @@ public class Transformable : MonoBehaviour, ISelectable
 
     private void OnEnable()
     {
-        SaveGimbalValues();
+        for (int i = 0; i < gimbalValues.Length; i++)
+        {
+            var values = new GimbalValue();
+            values.gimbalPosition = InputController.instance.defaultGimbalValues[i].gimbalPosition;
+            values.gimbalRotation = InputController.instance.defaultGimbalValues[i].gimbalRotation;
+            values.gimbalScale = InputController.instance.defaultGimbalValues[i].gimbalScale;
+            gimbalValues[i] = values;
+        }
     }
 
     public void Select()

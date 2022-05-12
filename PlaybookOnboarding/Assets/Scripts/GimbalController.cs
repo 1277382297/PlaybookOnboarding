@@ -6,7 +6,6 @@ public enum TransformMode { Translate, Rotate, Scale }
 public class GimbalController : MonoBehaviour, ISelectable
 {
     public TransformMode transformMode;
-    [SerializeField] Transform gimbalTransform;
 
     private Vector3 mOffset;
     private float mSensitivity = 1f;
@@ -15,8 +14,8 @@ public class GimbalController : MonoBehaviour, ISelectable
 
     private void Update()
     {
-        if (InputController.instance.selectedObject)
-            gimbalTransform.position = InputController.instance.selectedObject.transform.position;
+        if (InputController.instance.selectedObject && InputController.instance.gimbal.transform)
+            InputController.instance.gimbal.transform.position = InputController.instance.selectedObject.transform.position;
     }
 
     public void Select()
@@ -40,12 +39,12 @@ public class GimbalController : MonoBehaviour, ISelectable
             case TransformMode.Translate:
                 //gimbalTransform.position = currentMousePos + (InputController.instance.selectedObject.transform.position - Vector3.Project(transform.position, direction)) + mOffset + transform.parent.localPosition;
                 InputController.instance.selectedObject.Translate((currentMousePos - mPreviousMousePos) * mSensitivity);
-                gimbalTransform.Translate((currentMousePos - mPreviousMousePos) * mSensitivity);
+                InputController.instance.gimbal.transform.Translate((currentMousePos - mPreviousMousePos) * mSensitivity);
                 break;
             case TransformMode.Rotate:
                 transform.parent.position = currentMousePos + (InputController.instance.selectedObject.transform.position - Vector3.Project(transform.position, direction)) + mOffset;
                 InputController.instance.selectedObject.Rotate((currentMousePos - mPreviousMousePos) * 10 * mSensitivity);
-                gimbalTransform.Rotate((currentMousePos - mPreviousMousePos) * 10 * mSensitivity);
+                InputController.instance.gimbal.transform.Rotate((currentMousePos - mPreviousMousePos) * 10 * mSensitivity);
                 break;
             case TransformMode.Scale:
                 var newScale = InputController.instance.selectedObject.localScale + (currentMousePos - mPreviousMousePos) * mSensitivity;
