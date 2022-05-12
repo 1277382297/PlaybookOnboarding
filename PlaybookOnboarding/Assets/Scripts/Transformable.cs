@@ -2,22 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct GimbalValue
+{
+    public Vector3 gimbalPosition;
+    public Quaternion gimbalRotation;
+    public Vector3 gimbalScale;
+}
+
 public class Transformable : MonoBehaviour, ISelectable
 {
+    public GimbalValue[] gimbalValues = new GimbalValue[4];
+
     private Vector3 mOffset;
+
+    private void OnEnable()
+    {
+        SaveGimbalValues();
+    }
 
     public void Select()
     {
-        InputController.instance.previousSelectable.Deselect();
+        InputController.instance.previousSelectable?.Deselect();
 
         InputController.instance.selectedObject = transform;
+        ToggleSelectedObjectUI(true);
         mOffset = InputController.instance.GetMousePos() - transform.position;
 
-        if (InputController.instance.hitObject == transform)
+        /*if (InputController.instance.hitObject == transform)
         {
             ToggleSelectedObjectUI(false);
             InputController.instance.selectedObject = InputController.instance.hitObject;
-        }
+        }*/
     }
 
     public void Deselect()
@@ -28,7 +43,6 @@ public class Transformable : MonoBehaviour, ISelectable
 
     public void Drag()
     {
-        ToggleSelectedObjectUI(true);
         if (InputController.instance.isGrabbing)
         {
             transform.position = InputController.instance.GetMousePos() - mOffset;
@@ -44,9 +58,33 @@ public class Transformable : MonoBehaviour, ISelectable
         var selectedObj = InputController.instance.selectedObject;
         if (selectedObj && selectedObj.GetComponent<Outline>())
             selectedObj.GetComponent<Outline>().enabled = toggleOn;
-
-        if (selectedObj)
-            InputController.instance.gimbal.transform.position = selectedObj.position;
         InputController.instance.gimbal.SetActive(toggleOn);
+
+        if (toggleOn)
+            LoadGimbalValues();
+        else
+            SaveGimbalValues();
+    }
+
+    private void LoadGimbalValues()
+    {
+        for (int i = 0; i < gimbalValues.Length; i++)
+        {
+            InputController.instance.gimbalsList[i].localPosition = gimbalValues[i].gimbalPosition;
+            InputController.instance.gimbalsList[i].localRotation = gimbalValues[i].gimbalRotation;
+            InputController.instance.gimbalsList[i].localScale = gimbalValues[i].gimbalScale;
+        }
+    }
+
+    private void SaveGimbalValues()
+    {
+        for (int i = 0; i < gimbalValues.Length; i++)
+        {
+            var values = new GimbalValue();
+            values.gimbalPosition = InputController.instance.gimbalsList[i].localPosition;
+            values.gimbalRotation = InputController.instance.gimbalsList[i].localRotation;
+            values.gimbalScale = InputController.instance.gimbalsList[i].localScale;
+            gimbalValues[i] = values;
+        }
     }
 }

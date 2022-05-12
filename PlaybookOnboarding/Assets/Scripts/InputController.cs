@@ -11,12 +11,14 @@ public class InputController : MonoBehaviour
     public GameObject gimbal { get { return mGimbal; } }
     public Transform hitObject { get { return mHitObject; } set { mHitObject = value; } }
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
+    public Transform[] gimbalsList { get { return mGimbalsList; } }
 
     private Transform mSelectedObject = null;
     private bool bIsGrabbing = false;
     private GameObject mGimbal = null;
     private Transform mHitObject;
     private ISelectable mPreviousSelectable = null;
+    private Transform[] mGimbalsList;
 
     public static InputController instance;
 
@@ -29,6 +31,9 @@ public class InputController : MonoBehaviour
     {
         mGimbal = Instantiate(gimbalPrefab);
         mGimbal.SetActive(false);
+        var gimbalManager = mGimbal.GetComponent<GimbalManager>();
+        if (gimbalManager)
+            mGimbalsList = gimbalManager.gimbals;
     }
 
     private void Update()

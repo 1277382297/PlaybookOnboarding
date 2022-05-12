@@ -38,13 +38,11 @@ public class CubeSpawner : MonoBehaviour, ISelectable
         outline.OutlineMode = Outline.Mode.OutlineAll;
         outline.OutlineWidth = 10;
 
-        cube.AddComponent<Transformable>();
-
-        if (InputController.instance.previousSelectable != null)
-            InputController.instance.previousSelectable.Deselect();
+        var cubeSelectable = cube.AddComponent<Transformable>();
+        InputController.instance.previousSelectable?.Deselect();
         InputController.instance.selectedObject = cube.transform;
         InputController.instance.hitObject = cube.transform;
         InputController.instance.isGrabbing = true;
-
+        cubeSelectable.ToggleSelectedObjectUI(true);
     }
 }

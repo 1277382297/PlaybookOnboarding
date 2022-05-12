@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1705267384223709956}
   - component: {fileID: 4491088868009649115}
   m_Layer: 5
-  m_Name: Cube (1)
+  m_Name: Translate_Y
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 1320946891010038528}
   - component: {fileID: 2315049307933361066}
   m_Layer: 5
-  m_Name: Cube (2)
+  m_Name: Translate_Z
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 317018371198700867}
   - component: {fileID: 2066864860725652104}
   m_Layer: 5
-  m_Name: Cube (2)
+  m_Name: Rotate_Z
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 7181546785277356344}
   - component: {fileID: 3018223605407390680}
   m_Layer: 5
-  m_Name: Cube
+  m_Name: Translate_X
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 7930174674132092341}
   - component: {fileID: 5165153950901584654}
   m_Layer: 5
-  m_Name: Cube
+  m_Name: Rotate_X
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 7805783730552120730}
   - component: {fileID: 54132802715793211}
   m_Layer: 5
-  m_Name: Cube (1)
+  m_Name: Rotate_Y
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -735,6 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8659813321346105660}
+  - component: {fileID: 6034601537857144174}
   m_Layer: 5
   m_Name: Gimbal
   m_TagString: Untagged
@@ -759,6 +760,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6034601537857144174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659813321346105656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b10302ba3dc104581c382532b7dfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mGimbals:
+  - {fileID: 8659813321346105660}
+  - {fileID: 8659813321488048584}
+  - {fileID: 7697340865392572810}
+  - {fileID: 2825726966259396137}
 --- !u!1 &8659813321488048587
 GameObject:
   m_ObjectHideFlags: 0
@@ -806,7 +824,7 @@ GameObject:
   - component: {fileID: 8659813321705284521}
   - component: {fileID: 1044803005856813670}
   m_Layer: 5
-  m_Name: Cube (2)
+  m_Name: Scale_Z
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -916,7 +934,7 @@ GameObject:
   - component: {fileID: 8659813322247766393}
   - component: {fileID: 21664872608412646}
   m_Layer: 5
-  m_Name: Cube
+  m_Name: Scale_X
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1026,7 +1044,7 @@ GameObject:
   - component: {fileID: 8659813322249547412}
   - component: {fileID: 8807154589835213744}
   m_Layer: 5
-  m_Name: Cube (1)
+  m_Name: Scale_Y
   m_TagString: Scale
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
