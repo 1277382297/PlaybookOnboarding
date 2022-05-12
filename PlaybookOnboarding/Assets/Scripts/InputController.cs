@@ -11,16 +11,14 @@ public class InputController : MonoBehaviour
     public GameObject gimbal { get { return mGimbal; } }
     public Transform hitObject { get { return mHitObject; } set { mHitObject = value; } }
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
-    public Transform[] gimbalsList { get { return mGimbalsList; } }
-    public GimbalValue[] defaultGimbalValues { get { return mDefaultGimbalValues; } }
+    public GimbalManager gimbalManager { get { return mGimbalManager; } }
 
     private Transform mSelectedObject = null;
     private bool bIsGrabbing = false;
     private GameObject mGimbal = null;
     private Transform mHitObject;
     private ISelectable mPreviousSelectable = null;
-    private Transform[] mGimbalsList;
-    private GimbalValue[] mDefaultGimbalValues;
+    private GimbalManager mGimbalManager;
 
     public static InputController instance;
 
@@ -31,13 +29,11 @@ public class InputController : MonoBehaviour
 
     private void Start()
     {
-        mGimbal = Instantiate(gimbalPrefab);
-        mGimbal.SetActive(false);
-        var gimbalManager = mGimbal.GetComponent<GimbalManager>();
-        if (gimbalManager)
+        if (gimbalPrefab)
         {
-            mGimbalsList = gimbalManager.gimbals;
-            mDefaultGimbalValues = gimbalManager.defaultValues;
+            mGimbal = Instantiate(gimbalPrefab);
+            mGimbal.SetActive(false);
+            mGimbalManager = mGimbal.GetComponent<GimbalManager>();
         }
     }
 
