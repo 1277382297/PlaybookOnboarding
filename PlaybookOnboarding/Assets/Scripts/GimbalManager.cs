@@ -21,8 +21,8 @@ public class GimbalManager : MonoBehaviour
         get { return mDefaultValues; }
     }
 
-    [SerializeField] private Transform[] mGimbals = new Transform[4];
-    private GimbalValue[] mDefaultValues = new GimbalValue[4];
+    [SerializeField] private Transform[] mGimbals = new Transform[5];
+    private GimbalValue[] mDefaultValues = new GimbalValue[5];
 
     private void Awake()
     {

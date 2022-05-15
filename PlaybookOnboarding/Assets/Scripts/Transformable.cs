@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Transformable : MonoBehaviour, ISelectable
 {
-    public GimbalValue[] gimbalValues = new GimbalValue[4];
+    public GimbalValue[] gimbalValues = new GimbalValue[5];
 
     private Vector3 mOffset;
 

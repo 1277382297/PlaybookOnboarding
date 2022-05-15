@@ -10,7 +10,7 @@ public class RotateGimbal : GimbalController
     public override void Select()
     {
         mOffset = transform.position - InputController.instance.selectedObject.transform.position;
-        mPreviousMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), mOffset.normalized);
+        mPreviousMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), mPerpendicularDirection);
 
         if (isX)
             mPerpendicularDirection = InputController.instance.selectedObject.up;
@@ -23,9 +23,12 @@ public class RotateGimbal : GimbalController
     public override void Drag()
     {
         var direction = mOffset.normalized;
-        var currentMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), direction);
-        var angle = Vector3.SignedAngle(mPreviousMousePos - InputController.instance.selectedObject.position, currentMousePos - InputController.instance.selectedObject.position, direction);
+        var currentMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), mPerpendicularDirection) + Vector3.Project(transform.position, mPerpendicularDirection);
+        var angle = Vector3.SignedAngle(mPreviousMousePos - InputController.instance.selectedObject.position,
+                                        currentMousePos - InputController.instance.selectedObject.position,
+                                        direction);
         var localAmountCursorMoved = InputController.instance.selectedObject.InverseTransformDirection(angle * mPerpendicularDirection);
+        Debug.Log(angle);
         InputController.instance.selectedObject.Rotate(localAmountCursorMoved * mSensitivity);
         InputController.instance.gimbal.transform.Rotate(localAmountCursorMoved * mSensitivity);
         mPreviousMousePos = currentMousePos;
