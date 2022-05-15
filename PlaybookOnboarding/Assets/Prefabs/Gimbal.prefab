@@ -330,7 +330,6 @@ MonoBehaviour:
   isX: 0
   isY: 0
   isZ: 1
-  cube: {fileID: 0}
 --- !u!1 &4710390491565617518
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +584,6 @@ MonoBehaviour:
   isX: 1
   isY: 0
   isZ: 0
-  cube: {fileID: 0}
 --- !u!1 &6723891983664090012
 GameObject:
   m_ObjectHideFlags: 0
@@ -764,7 +762,6 @@ MonoBehaviour:
   isX: 0
   isY: 1
   isZ: 0
-  cube: {fileID: 0}
 --- !u!1 &8659813321346105656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1264,7 +1261,6 @@ MonoBehaviour:
   isX: 0
   isY: 1
   isZ: 0
-  cube: {fileID: 0}
 --- !u!1001 &711795857905494753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1348,7 +1344,6 @@ MonoBehaviour:
   isX: 1
   isY: 0
   isZ: 0
-  cube: {fileID: 0}
 --- !u!1001 &2317072008219416523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1432,4 +1427,3 @@ MonoBehaviour:
   isX: 0
   isY: 0
   isZ: 1
-  cube: {fileID: 0}

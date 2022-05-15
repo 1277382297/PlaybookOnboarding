@@ -26,7 +26,7 @@ public class CircleLineRenderer : MonoBehaviour
     void DrawCircle(int steps, float radius)
     {
         // referenced from https://www.youtube.com/watch?v=DdAfwHYNFOE
-        mCircleRenderer.positionCount = steps;
+        mCircleRenderer.positionCount = steps+1;
 
         for (int currentStep = 0; currentStep < steps; currentStep++)
         {
@@ -44,5 +44,6 @@ public class CircleLineRenderer : MonoBehaviour
 
             mCircleRenderer.SetPosition(currentStep, currentPosition);
         }
+        mCircleRenderer.SetPosition(steps, mCircleRenderer.GetPosition(0));
     }
 }

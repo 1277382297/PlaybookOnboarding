@@ -22,14 +22,15 @@ public class GimbalManager : MonoBehaviour
     }
 
     [SerializeField] private Transform[] mGimbals = new Transform[5];
-    private GimbalValue[] mDefaultValues = new GimbalValue[5];
+    private GimbalValue[] mDefaultValues;
 
     private void Awake()
     {
+        mDefaultValues = new GimbalValue[mGimbals.Length];
         SaveGimbalValues(mDefaultValues, mGimbals);
     }
 
-    public void LoadGimbalValues(Transform[] loadTo, GimbalValue[] loadFrom)
+    public void LoadGimbalValues(Transform[] loadTo, List<GimbalValue> loadFrom)
     {
         for (int i = 0; i < loadTo.Length; i++)
         {
@@ -38,6 +39,7 @@ public class GimbalManager : MonoBehaviour
             loadTo[i].localScale = loadFrom[i].gimbalScale;
         }
     }
+
 
     public void SaveGimbalValues(GimbalValue[] loadTo, Transform[] loadFrom)
     {
@@ -51,15 +53,29 @@ public class GimbalManager : MonoBehaviour
         }
     }
 
-    public void SaveGimbalValues(GimbalValue[] loadTo, GimbalValue[] loadFrom)
+    public void SaveGimbalValues(List<GimbalValue> loadTo, GimbalValue[] loadFrom)
     {
-        for (int i = 0; i < loadTo.Length; i++)
+        loadTo.Clear();
+        for (int i = 0; i < loadFrom.Length; i++)
         {
             var values = new GimbalValue();
             values.gimbalPosition = loadFrom[i].gimbalPosition;
             values.gimbalRotation = loadFrom[i].gimbalRotation;
             values.gimbalScale = loadFrom[i].gimbalScale;
-            loadTo[i] = values;
+            loadTo.Add(values);
+        }
+    }
+
+    public void SaveGimbalValues(List<GimbalValue> loadTo, Transform[] loadFrom)
+    {
+        loadTo.Clear();
+        for (int i = 0; i < loadFrom.Length; i++)
+        {
+            var values = new GimbalValue();
+            values.gimbalPosition = loadFrom[i].localPosition;
+            values.gimbalRotation = loadFrom[i].localRotation;
+            values.gimbalScale = loadFrom[i].localScale;
+            loadTo.Add(values);
         }
     }
 }

@@ -35,7 +35,7 @@ public class CubeSpawner : MonoBehaviour, ISelectable
         var outline = cube.AddComponent<Outline>();
         outline.enabled = false;
         outline.OutlineColor = grabbedObjectOutlineColor;
-        outline.OutlineMode = Outline.Mode.OutlineAll;
+        outline.OutlineMode = Outline.Mode.OutlineVisible;
         outline.OutlineWidth = 10;
 
         var cubeSelectable = cube.AddComponent<Transformable>();
