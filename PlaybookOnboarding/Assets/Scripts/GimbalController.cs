@@ -12,6 +12,10 @@ public class GimbalController : MonoBehaviour, ISelectable
     private Vector3 mPreviousMousePos;
     private Vector3 mLocalPosition;
 
+    public bool isX = false, isY= false, isZ = false;
+
+    private Vector3 mPerpendicularDirection;
+
     private void Update()
     {
         if (InputController.instance.selectedObject && InputController.instance.gimbal.transform)
@@ -20,9 +24,28 @@ public class GimbalController : MonoBehaviour, ISelectable
 
     public void Select()
     {
-        mOffset = transform.parent.position - InputController.instance.selectedObject.transform.position;
+        switch (transformMode)
+        {
+            case TransformMode.Rotate:
+                mOffset = transform.position - InputController.instance.selectedObject.transform.position;
+                mPreviousMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), mOffset.normalized);
+
+                if (isX)
+                    mPerpendicularDirection = InputController.instance.selectedObject.up;
+                else if (isY)
+                    mPerpendicularDirection = InputController.instance.selectedObject.right;
+                else if (isZ)
+                    mPerpendicularDirection = InputController.instance.selectedObject.forward;
+
+                break;
+            default:
+                mOffset = transform.parent.position - InputController.instance.selectedObject.transform.position;
+                mPreviousMousePos = Vector3.Project(InputController.instance.GetMousePos(), mOffset.normalized);
+                break;
+        }
+
         mLocalPosition = transform.parent.localPosition;
-        mPreviousMousePos = Vector3.Project(InputController.instance.GetMousePos(), mOffset.normalized);
+        
     }
 
     public void Deselect()
@@ -41,9 +64,11 @@ public class GimbalController : MonoBehaviour, ISelectable
                 InputController.instance.gimbal.transform.Translate(localAmountCursorMoved * mSensitivity);
                 break;
             case TransformMode.Rotate:
+                currentMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), direction);
+                var angle = Vector3.SignedAngle(mPreviousMousePos - InputController.instance.selectedObject.position, currentMousePos - InputController.instance.selectedObject.position, direction);
+                localAmountCursorMoved = InputController.instance.selectedObject.InverseTransformDirection(angle * mPerpendicularDirection);
                 InputController.instance.selectedObject.Rotate(localAmountCursorMoved * mSensitivity);
                 InputController.instance.gimbal.transform.Rotate(localAmountCursorMoved * mSensitivity);
-                transform.parent.Translate(localAmountCursorMoved);
                 break;
             case TransformMode.Scale:
                 var newScale = InputController.instance.selectedObject.localScale + localAmountCursorMoved * mSensitivity;

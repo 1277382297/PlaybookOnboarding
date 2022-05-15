@@ -32,7 +32,7 @@ public class CircleLineRenderer : MonoBehaviour
         Mesh mesh = new Mesh();
         mCircleRenderer.BakeMesh(mesh, false);
         mMeshCollider.sharedMesh = mesh;
-        //mMeshCollider.convex = true;
+        mMeshCollider.convex = true;
     }
 
     void DrawCircle(int steps, float radius)
