@@ -12,8 +12,6 @@ public class InputController : MonoBehaviour
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
     public GimbalManager gimbalManager { get { return mGimbalManager; } }
 
-    //[SerializeField] private GameObject cube;
-
     private Transform mSelectedObject = null;
     private GameObject mGimbal = null;
     private Transform mHitObject;
@@ -39,7 +37,6 @@ public class InputController : MonoBehaviour
 
     private void Update()
     {
-        //cube.transform.position = GetMousePos();
         // selected object
         if (Input.GetMouseButtonDown(0))
         {
