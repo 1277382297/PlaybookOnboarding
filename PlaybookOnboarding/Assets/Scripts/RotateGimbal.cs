@@ -25,7 +25,7 @@ public class RotateGimbal : GimbalController
         var direction = mOffset.normalized;
         var currentMousePos = Vector3.ProjectOnPlane(InputController.instance.GetMousePos(), direction);
         var angle = Vector3.SignedAngle(mPreviousMousePos - InputController.instance.selectedObject.position, currentMousePos - InputController.instance.selectedObject.position, direction);
-        var localAmountCursorMoved = InputController.instance.selectedObject.InverseTransformDirection(currentMousePos - mPreviousMousePos);
+        var localAmountCursorMoved = InputController.instance.selectedObject.InverseTransformDirection(angle * mPerpendicularDirection);
         InputController.instance.selectedObject.Rotate(localAmountCursorMoved * mSensitivity);
         InputController.instance.gimbal.transform.Rotate(localAmountCursorMoved * mSensitivity);
         mPreviousMousePos = currentMousePos;
