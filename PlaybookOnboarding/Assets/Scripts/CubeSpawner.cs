@@ -42,7 +42,6 @@ public class CubeSpawner : MonoBehaviour, ISelectable
         InputController.instance.previousSelectable?.Deselect();
         InputController.instance.selectedObject = cube.transform;
         InputController.instance.hitObject = cube.transform;
-        InputController.instance.isGrabbing = true;
         cubeSelectable.ToggleSelectedObjectUI(true);
     }
 }

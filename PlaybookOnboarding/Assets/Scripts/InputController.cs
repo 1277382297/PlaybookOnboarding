@@ -7,14 +7,12 @@ public class InputController : MonoBehaviour
     [SerializeField] private GameObject gimbalPrefab;
 
     public Transform selectedObject { get { return mSelectedObject; } set { mSelectedObject = value; } }
-    public bool isGrabbing { get { return bIsGrabbing; } set { bIsGrabbing = value; } }
     public GameObject gimbal { get { return mGimbal; } }
     public Transform hitObject { get { return mHitObject; } set { mHitObject = value; } }
     public ISelectable previousSelectable { get { return mPreviousSelectable; } }
     public GimbalManager gimbalManager { get { return mGimbalManager; } }
 
     private Transform mSelectedObject = null;
-    private bool bIsGrabbing = false;
     private GameObject mGimbal = null;
     private Transform mHitObject;
     private ISelectable mPreviousSelectable = null;
@@ -72,12 +70,10 @@ public class InputController : MonoBehaviour
             {
                 if (Input.GetMouseButton(0))
                 {
-                    bIsGrabbing = true;
                     selectable.Drag();
                 }
                 else
                 {
-                    bIsGrabbing = false;
                     selectable.Drop();
                 }
             }

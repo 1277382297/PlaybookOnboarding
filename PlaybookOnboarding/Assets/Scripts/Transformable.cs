@@ -31,10 +31,7 @@ public class Transformable : MonoBehaviour, ISelectable
 
     public void Drag()
     {
-        if (InputController.instance.isGrabbing)
-        {
-            transform.position = InputController.instance.GetMousePos() - mOffset;
-        }
+        transform.position = InputController.instance.GetMousePos() - mOffset;
     }
 
     public void Drop()
