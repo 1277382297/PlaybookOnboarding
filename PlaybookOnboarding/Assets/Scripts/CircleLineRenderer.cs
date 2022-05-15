@@ -27,8 +27,9 @@ public class CircleLineRenderer : MonoBehaviour
 
     void RefreshCircle()
     {
-        var v3 = InputController.instance.selectedObject.localScale;
-        DrawCircle(100, Mathf.Max(Mathf.Max(v3.x, v3.y), v3.z));
+        var v3 = InputController.instance.selectedObject.localScale; 
+        //DrawCircle(100, Mathf.Max(Mathf.Max(v3.x, v3.y), v3.z));
+        DrawCircle(100, 1);
         Mesh mesh = new Mesh();
         mCircleRenderer.BakeMesh(mesh, false);
         mMeshCollider.sharedMesh = mesh;
